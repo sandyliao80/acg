@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 typedef void (^RequestFinished)(BOOL flag);
 @interface RDVFirstViewController : UIViewController
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) MGScrollView *scroller;
 @property (nonatomic, strong) RequestFinished requestFinishBlock;
 
 

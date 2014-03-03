@@ -18,4 +18,8 @@
 #import "SDImageCache.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
+#import "MGBox.h"
+#import "MGTableBoxStyled.h"
+#import "MGScrollView.h"
+#import "UIImageView+WebCache.h"
 #endif

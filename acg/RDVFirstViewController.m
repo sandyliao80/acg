@@ -57,12 +57,9 @@
     /**
      *  列表初始化
      */
-    self.tableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [self.tableView setDataSource:(id<UITableViewDataSource>)self];
-    [self.tableView setDelegate:(id<UITableViewDelegate>)self];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin];
-    [self.view addSubview:self.tableView];
+    self.scroller= [MGScrollView scrollerWithSize:self.view.bounds.size];
+    [self.scroller setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [self.view addSubview:self.scroller];
     
     
     
@@ -77,17 +74,34 @@
      *  请求结束的回调
      */
     __block RDVFirstViewController *_self=self;
+    __block NSMutableArray *_requestData_playList=requestData_playList;
     self.requestFinishBlock=^(BOOL flag) {
         if (flag) {
             
                 // 主线程执行：
             dispatch_async(dispatch_get_main_queue(), ^{
                     // something
-                [_self.tableView reloadData];
+                MGBox *grid = [MGBox boxWithSize:_self.view.bounds.size];
+                grid.contentLayoutMode = MGLayoutGridStyle;
+                [_self.scroller.boxes addObject:grid];
+                
+                for (int i = 0; i < _requestData_playList.count ; i++) {
+                    MGBox *box = [MGBox boxWithSize:(CGSize){100, 100}];
+                    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+                    NSLog(@"[_current_playList objectAtIndex:i]=%@",[_requestData_playList objectAtIndex:i]);
+                    [imageView setImageWithURL:[NSURL URLWithString:[[[_requestData_playList objectAtIndex:i]objectForKey:@"cover"]valueForKey:@"small"]] placeholderImage:nil];
+                    
+                    [box addSubview:imageView];
+                    box.leftMargin = box.topMargin = 5;
+                    [grid.boxes addObject:box];
+                }
+                [grid layoutWithSpeed:0.3 completion:nil];
+                [_self.scroller layoutWithSpeed:0.3 completion:nil];
+              
                     // 2秒后刷新表格
                 [_footer performSelector:@selector(endRefreshing) withObject:nil afterDelay:1.0];
                 [_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:1.0];
-                [_self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+               
             });
             
             
@@ -112,9 +126,9 @@
     };
     
         //添加下拉刷新
-    _header = [[MJRefreshHeaderView alloc] initWithScrollView:self.tableView];
+    _header = [[MJRefreshHeaderView alloc] initWithScrollView:self.scroller];
     _header.delegate = self;
-    _header.scrollView = self.tableView;
+    _header.scrollView = self.scroller;
     _header.beginRefreshingBlock=^(MJRefreshBaseView *refreshView) {
         index=1;
         
@@ -136,7 +150,7 @@
         //添加上拉加载更多
     _footer = [[MJRefreshFooterView alloc] init];
     _footer.delegate = self;
-    _footer.scrollView = self.tableView;
+    _footer.scrollView = self.scroller;
     _footer.beginRefreshingBlock=^(MJRefreshBaseView *refreshView) {
         index++;
         /**
