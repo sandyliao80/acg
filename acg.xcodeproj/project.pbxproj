@@ -45,6 +45,7 @@
 		831FFB7318C4225400CAA765 /* RDVFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831FFB6E18C4225400CAA765 /* RDVFirstViewController.m */; };
 		831FFB7418C4225400CAA765 /* RDVSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831FFB7018C4225400CAA765 /* RDVSecondViewController.m */; };
 		831FFB7518C4225400CAA765 /* RDVThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831FFB7218C4225400CAA765 /* RDVThirdViewController.m */; };
+		831FFB7818C4234F00CAA765 /* RDVFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831FFB7718C4234F00CAA765 /* RDVFourViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		831FFB7018C4225400CAA765 /* RDVSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVSecondViewController.m; sourceTree = "<group>"; };
 		831FFB7118C4225400CAA765 /* RDVThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVThirdViewController.h; sourceTree = "<group>"; };
 		831FFB7218C4225400CAA765 /* RDVThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVThirdViewController.m; sourceTree = "<group>"; };
+		831FFB7618C4234F00CAA765 /* RDVFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVFourViewController.h; sourceTree = "<group>"; };
+		831FFB7718C4234F00CAA765 /* RDVFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVFourViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				831FFB7018C4225400CAA765 /* RDVSecondViewController.m */,
 				831FFB7118C4225400CAA765 /* RDVThirdViewController.h */,
 				831FFB7218C4225400CAA765 /* RDVThirdViewController.m */,
+				831FFB7618C4234F00CAA765 /* RDVFourViewController.h */,
+				831FFB7718C4234F00CAA765 /* RDVFourViewController.m */,
 				831FFB1C18C4211500CAA765 /* Images.xcassets */,
 				831FFB1118C4211500CAA765 /* Supporting Files */,
 			);
@@ -378,6 +383,7 @@
 				831FFB4318C421A100CAA765 /* RDVTabBarItem.m in Sources */,
 				831FFB4218C421A100CAA765 /* RDVTabBarController.m in Sources */,
 				831FFB7318C4225400CAA765 /* RDVFirstViewController.m in Sources */,
+				831FFB7818C4234F00CAA765 /* RDVFourViewController.m in Sources */,
 				831FFB1B18C4211500CAA765 /* AppDelegate.m in Sources */,
 				831FFB1718C4211500CAA765 /* main.m in Sources */,
 				831FFB4118C421A100CAA765 /* RDVTabBar.m in Sources */,

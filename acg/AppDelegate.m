@@ -10,6 +10,7 @@
 #import "RDVFirstViewController.h"
 #import "RDVSecondViewController.h"
 #import "RDVThirdViewController.h"
+#import "RDVFourViewController.h"
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 @implementation AppDelegate
@@ -40,11 +41,16 @@
     UIViewController *thirdViewController = [[RDVThirdViewController alloc] init];
     UIViewController *thirdNavigationController = [[UINavigationController alloc]
                                                    initWithRootViewController:thirdViewController];
-    UIViewController *fourViewController = [[RDVThirdViewController alloc] init];
+    UIViewController *fourViewController = [[RDVFourViewController alloc] init];
     UIViewController *fourNavigationController = [[UINavigationController alloc]
                                                   initWithRootViewController:fourViewController];
     
-    firstNavigationController.title=@"1";
+    
+    
+     firstNavigationController.title=@"首页";
+     secondNavigationController.title=@"搜索";
+     thirdNavigationController.title=@"本地";
+     fourNavigationController.title=@"更多";
     RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
     [tabBarController setViewControllers:@[firstNavigationController, secondNavigationController,
                                            thirdNavigationController,fourNavigationController]];
