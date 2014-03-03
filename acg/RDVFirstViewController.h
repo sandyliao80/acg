@@ -22,7 +22,12 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-
+typedef void (^RequestFinished)(BOOL flag);
 @interface RDVFirstViewController : UIViewController
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) RequestFinished requestFinishBlock;
 
+
+
+-(void)requestData:(RequestFinished)finishedBlock;
 @end

@@ -5,7 +5,8 @@
 //
 
 #import <Availability.h>
-
+#define APPKEY @"c733aedb2e14ff113da14390d84cd3f0050beb32c"
+#define APPSECRET @"49e28873ac0de83f4decf72ab951991b"
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
@@ -13,4 +14,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#import "SDWebImageManager.h"
+#import "SDImageCache.h"
+#import "MJRefresh.h"
+#import "MBProgressHUD.h"
 #endif
