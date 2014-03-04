@@ -29,7 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
+       self.navigationItem.title=@"管理壁纸";
     }
     return self;
 }

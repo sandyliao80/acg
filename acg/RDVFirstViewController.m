@@ -37,6 +37,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.navigationItem.title=@"ACG壁纸";
             //当前播放列表数据
         current_playList=[NSMutableArray arrayWithObjects: nil];
             //网络请求返回的数据
@@ -97,6 +98,7 @@
                 }
                 [grid layoutWithSpeed:0.3 completion:nil];
                 [_self.scroller layoutWithSpeed:0.3 completion:nil];
+                
               
                     // 2秒后刷新表格
                 [_footer performSelector:@selector(endRefreshing) withObject:nil afterDelay:1.0];
@@ -181,7 +183,7 @@
     
     
         //创建NSURLRequest
-    NSString *str=[NSString stringWithFormat:@"http://moe.fm/listen/playlist?api=json&perpage=10&page=%ld&api_key=%@",(long)index,APPKEY];
+    NSString *str=[NSString stringWithFormat:@"http://moe.fm/listen/playlist?api=json&perpage=15&page=%ld&api_key=%@",(long)index,APPKEY];
     NSMutableURLRequest* urlrequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:str] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:6.0];
     [urlrequest setHTTPMethod:@"GET"];
     NSError* error = nil;

@@ -17,7 +17,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
+       self.navigationItem.title=@"系统设置";
     }
     return self;
 }
