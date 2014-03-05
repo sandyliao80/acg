@@ -48,7 +48,10 @@
     }
     return self;
 }
--(void) initTableView{
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -59,17 +62,13 @@
      *  列表初始化
      */
     self.scroller= [MGScrollView scrollerWithSize:self.view.bounds.size];
-    [self.scroller setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [self.scroller setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin];
     [self.view addSubview:self.scroller];
+   
     
-    
-    
-}
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initTableView];
+    MGBox *grid = [MGBox boxWithSize:self.view.bounds.size];
+    grid.contentLayoutMode = MGLayoutGridStyle;
+    [self.scroller.boxes addObject:grid];
     
     /**
      *  请求结束的回调
@@ -78,13 +77,11 @@
     __block NSMutableArray *_requestData_playList=requestData_playList;
     self.requestFinishBlock=^(BOOL flag) {
         if (flag) {
-            
+            NSLog(@"_requestData_playList cout=%d",_requestData_playList.count);
                 // 主线程执行：
             dispatch_async(dispatch_get_main_queue(), ^{
                     // something
-                MGBox *grid = [MGBox boxWithSize:_self.view.bounds.size];
-                grid.contentLayoutMode = MGLayoutGridStyle;
-                [_self.scroller.boxes addObject:grid];
+                
                 
                 for (int i = 0; i < _requestData_playList.count ; i++) {
                     MGBox *box = [MGBox boxWithSize:(CGSize){100, 100}];
@@ -133,6 +130,7 @@
     _header.scrollView = self.scroller;
     _header.beginRefreshingBlock=^(MJRefreshBaseView *refreshView) {
         index=1;
+      
         
             //  后台执行：
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
